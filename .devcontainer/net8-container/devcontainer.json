@@ -1,0 +1,43 @@
+{
+  "name": "DotNet 8 Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+  "forwardPorts": [5000, 5001, 1434],
+  "portsAttributes": {
+    "5000": {
+      "label": "ASP.NET Core HTTPS Identity",
+      "onAutoForward": "openBrowser"
+    },
+    "5001": {
+      "label": "ASP.NET Core HTTPS Web",
+      "onAutoForward": "notify"
+    },
+    "1434": {
+      "label": "MSSQL Database",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/net8-container/opencode-setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "ms-mssql.mssql",
+        "hediet.vscode-drawio",
+        "mhutchie.git-graph",
+        "tomoki1207.pdf"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "workbench.editorAssociations": {
+          "*.draw.io.png": "hediet.vscode-drawio",
+          "*.drawio.png": "hediet.vscode-drawio"
+        }
+      }
+    }
+  }
+}
